@@ -256,7 +256,7 @@ public class ElevatorCS {
         	//l.askDesiredFloor(w.people);
                // l.floorList(w.people);
              //   l.initialize_elevator();
-			
+		System.out.println("fatima ayesha rimsha");	
      
     // w.Weight();
     // b.close();
