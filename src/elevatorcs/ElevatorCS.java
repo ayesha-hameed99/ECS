@@ -163,9 +163,12 @@ class level{
          Beep();
        //  delay(600);
     }
+     
     void notify(int num){
     System.out.println("");
     }
+    
+    
     void Beep(){
      Toolkit.getDefaultToolkit().beep();}
     
