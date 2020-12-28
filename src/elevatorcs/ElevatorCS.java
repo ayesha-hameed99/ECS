@@ -28,11 +28,12 @@ weight=input.nextDouble();
     }
 if(sum<=600){
 System.out.println("Elevator can start");
+
 return true;
 }else   
 {   
 Beep();
-System.out.println("Overweight elevatror");
+System.out.println("Overweight elevatror. Elevator cannot start");
  Beep();
  return false;
 }
@@ -89,15 +90,21 @@ class level{
 	int[] destination_lists = new int[MaxFloors];
          int people;
     void includePerson(){
-       
+   do{    
     System.out.println("Enter total number of people: ");
     people=input.nextInt();
     if(people>10 || people<0){
         System.out.println("Not more than 10 people are allowed");
     }
-    else{
-    System.out.println("Wait till your weight is calculated");
-    w.Weight(people);}
+    else
+      {
+    System.out.println("Wait till your weight is calculated...");
+    delay(600);
+   //w.Weight(people);
+    }
+    
+   }while(w.Weight(people)==false);
+   delay(600);
     displayLevel();
     listOfFloors = new ArrayList<>();
      for(int a = 0; a < people; a ++) {
@@ -139,7 +146,7 @@ class level{
 	}
     void MoveUp(){
       
-        { System.out.println(currentFloor++ +" Elevator is going up");
+        { System.out.println("Level "+currentFloor++ +" Elevator is going up");
         delay(1000);}
        // System.out.println("Level "+level+" arrived");
          Beep();
@@ -147,7 +154,7 @@ class level{
     }
     
      void MoveDown(){
-    System.out.println(currentFloor-- +" Elevator is going down");
+    System.out.println("Level "+currentFloor-- +" Elevator is going down");
      //  LocalTime lt= LocalTime.now();
        // long millis=System.currentTimeMillis();
     //    System.out.println(floor);
@@ -181,8 +188,10 @@ class level{
         void initialize_elevator() {
 		for(int a = 0; a < listOfFloors.size(); a ++) {
 			int shortest = findShortest();
-			System.out.println("Next destination: "+ shortest + "Floor");
+                        System.out.println();
+			System.out.println("Next destination: "+ shortest + " Floor"); 
                         System.out.println("Amount of People: " + destination_lists[shortest-1]);
+                        System.out.println();
 			delay(1500);
 			while(currentFloor < shortest) {
 				MoveUp();
@@ -190,9 +199,11 @@ class level{
 			while(currentFloor > shortest) {
 				MoveDown();
 			}
+                         System.out.println();
                          System.out.println("Arrived at: "+currentFloor+" Floor");
-			while(destination_lists[shortest-1] > 0) {
                            
+			while(destination_lists[shortest-1] > 0) {
+                         
 				System.out.println( "Unloading person "+destination_lists[shortest-1]-- + " at " + currentFloor + " Floor");
 				delay(1500);
 			}
