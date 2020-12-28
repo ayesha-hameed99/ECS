@@ -76,7 +76,7 @@ System.out.println("Overweight elevatror. Elevator cannot start");
 
 class level{
     Scanner input=new Scanner(System.in);
-    final int MaxPeople = 20;
+    final int MaxPeople = 10;
 	final int MaxFloors = 5;
 	final int MinPeople = 1;
 	final int MinFloor = 1;
@@ -87,14 +87,19 @@ class level{
 	int NoOfPeople = 0;
 	  ArrayList<Integer> listOfFloors;
    calculateWeight w=new calculateWeight();
+   Button b=new Button();
 	int[] destination_lists = new int[MaxFloors];
          int people;
     void includePerson(){
-   do{    
+        b.open();
+   do{   
+       
     System.out.println("Enter total number of people: ");
     people=input.nextInt();
     if(people>10 || people<0){
         System.out.println("Not more than 10 people are allowed");
+System.out.println("Enter again");
+        includePerson();
     }
     else
       {
@@ -102,15 +107,16 @@ class level{
     delay(600);
    //w.Weight(people);
     }
-    
+       
    }while(w.Weight(people)==false);
    delay(600);
+   b.close();
     displayLevel();
     listOfFloors = new ArrayList<>();
      for(int a = 0; a < people; a ++) {
          
         
-		 int floors=askPassengerFloor(a);
+		 int floors=askDesiredFloor(a);
                  if(!listOfFloors.contains(floors)) listOfFloors.add(floors);
                             
 			}
@@ -121,7 +127,7 @@ class level{
         for(int i=1; i<=MaxFloors;i++){
     System.out.println("Level "+i);}
     }
-    int askPassengerFloor(int n) {
+    int askDesiredFloor(int n) {
 		boolean isValidEntry = false;
 		int floor=0;
 		while(!isValidEntry) {
@@ -204,13 +210,15 @@ class level{
 			}
                          System.out.println();
                          System.out.println("Arrived at: "+currentFloor+" Floor");
-                           
+                           b.open();
 			while(destination_lists[shortest-1] > 0) {
                          
 				System.out.println( "Unloading person "+destination_lists[shortest-1]-- + " at " + currentFloor + " Floor");
 				delay(1500);
 			}
+                        b.close();
 		}
+            
 		includePerson();
 	}
 }
@@ -239,13 +247,13 @@ public class ElevatorCS {
       EmergencyCall EC=new EmergencyCall();
      level l=new level();
    
-     b.open();  
+   //  b.open();  
      l.includePerson();
     l.delay(600);
    // if(w.Weight()){
-        b.close();
-        l.displayLevel();
-        	//l.askPassengerFloor(w.people);
+       // b.close();
+       // l.displayLevel();
+        	//l.askDesiredFloor(w.people);
                // l.floorList(w.people);
              //   l.initialize_elevator();
 			
