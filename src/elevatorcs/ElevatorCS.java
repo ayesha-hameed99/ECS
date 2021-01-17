@@ -20,7 +20,8 @@ class calculateWeight{
    
 boolean Weight(int p){
 double sum=0;
-    for(int i=1; i<=p;i++){
+   
+for(int i=1; i<=p;i++){
 System.out.println("Enter weight of "+i +" person");
 weight=input.nextDouble();
 
@@ -85,6 +86,7 @@ class level{
 	int destinationFloor = 0;
 	int desiredFloor = 0;
 	int NoOfPeople = 0;
+          boolean condition=true;
 	  ArrayList<Integer> listOfFloors;
    calculateWeight w=new calculateWeight();
    Button b=new Button();
@@ -92,7 +94,7 @@ class level{
          int people;
     void includePerson(){
         b.open();
-        boolean condition=true;
+      
    do{   
        do{
            try
@@ -139,7 +141,7 @@ System.out.println("Enter again");
     int askDesiredFloor(int n) {
 		boolean isValidEntry = false;
 		int floor=0;
-                boolean condition=true;
+              
 		while(!isValidEntry) {
                     do{
                         try{
