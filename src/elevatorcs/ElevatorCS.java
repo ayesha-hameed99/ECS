@@ -92,10 +92,19 @@ class level{
          int people;
     void includePerson(){
         b.open();
+        boolean condition=true;
    do{   
-       
+       do{
+           try
+           {
     System.out.println("Enter total number of people: ");
     people=input.nextInt();
+    condition=false;
+       }catch(Exception e){
+        System.out.println("Only integer number allowed");
+     input.nextLine();
+       }
+       }while(condition);
     if(people>10 || people<0){
         System.out.println("Not more than 10 people are allowed");
 System.out.println("Enter again");
@@ -130,9 +139,18 @@ System.out.println("Enter again");
     int askDesiredFloor(int n) {
 		boolean isValidEntry = false;
 		int floor=0;
+                boolean condition=true;
 		while(!isValidEntry) {
+                    do{
+                        try{
 			System.out.println("Person No.: "+ (n+1) + " Enter your floor: ");
 			floor = input.nextInt();
+                        condition=false;
+                        }catch(Exception e){
+                        
+                        System.out.println("Only integer number allowed");
+                        input.nextLine();}
+                    }while(condition);
                        
 			if(floor < MinFloor || floor > MaxFloors) {
 				System.out.println("Error. You have entered out of range floor. Valid [1-5]");
